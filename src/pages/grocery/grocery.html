@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Groceries</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h3>{{title}}</h3>
+    <ion-list>
+        <ul class='list'>
+            <li *ngFor='let list of lists' [class.selected]='list === selectedList' (click)='onSelect(list)'>
+                <span class='badge'>{{list.name}}</span>
+            </li>
+        </ul>
+
+        <div *ngIf="selectedList">
+            <h2>{{selectedList.name}}</h2>
+
+            <div>
+                <label>Name: </label>
+                <input [(ngModel)]="selectedList.name" placeholder="name" />
+                <h3>Need to update your list? Select the item you want to change it.</h3>
+            </div>
+        </div>
+
+    </ion-list>
+
+</ion-content>
